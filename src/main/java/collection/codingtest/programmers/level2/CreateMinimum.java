@@ -1,4 +1,4 @@
-package collection.codingtest.programmers.level2.day1;
+package collection.codingtest.programmers.level2;
 
 import java.util.Arrays;
 

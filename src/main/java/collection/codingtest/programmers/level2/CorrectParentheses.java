@@ -1,4 +1,4 @@
-package collection.codingtest.programmers.level2.day2;
+package collection.codingtest.programmers.level2;
 
 public class CorrectParentheses {
 
