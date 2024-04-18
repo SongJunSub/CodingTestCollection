@@ -1,4 +1,4 @@
-package collection.codingtest.inflearn.simulation;
+package collection.codingtest.inflearn;
 
 import java.util.Arrays;
 
