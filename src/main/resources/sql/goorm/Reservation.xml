@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="level1">
+
+    <insert id="createReservationTable">
+        CREATE TABLE RESERVATION (
+            RESERVATION_ID NUMBER PRIMARY KEY,
+            /*RESERVATION_ID INT AUTO_INCREMENT PRIMARY KEY,*/
+            GUEST_NAME VARCHAR2(100) NOT NULL,
+            CONTACT_NUMBER VARCHAR2(20),
+            EMAIL VARCHAR2(100),
+            RESERVATION_DATE DATE NOT NULL,
+            /*RESERVATION_DATE DATETIME NOT NULL,*/
+            RESERVATION_STATUS VARCHAR2(2) DEFAULT 'RR'
+            /*RESERVATION_STATUS ENUM('RR', 'RC', 'RN') DEFAULT 'RR'*/
+        )
+    </insert>
+
+    <!--MySQL-->
+    <insert id="insertReservation">
+        INSERT INTO RESERVATION (
+            GUEST_NAME,
+            CONTACT_NUMBER,
+            EMAIL,
+            RESERVATION_DATE,
+            RESERVATION_STATUS
+        )
+        VALUES
+            ('John Doe', '123-4567-8901', 'john@example.com', '2024-04-22 10:00:00', 'RR'),
+            ('Jane Smith', '987-6543-2109', 'jane@example.com', '2024-04-25 14:00:00', 'RC');
+    </insert>
+
+    <!--Oracle-->
+    <insert id="insertReservation">
+        INSERT INTO RESERVATION (
+            RESERVATION_ID,
+            GUEST_NAME,
+            CONTACT_NUMBER,
+            EMAIL,
+            RESERVATION_DATE,
+            RESERVATION_STATUS
+        )
+        VALUES
+            (1, 'John Doe', '123-4567-8901', 'john@example.com', SYSDATE, 'RR'),
+            (2, 'Jane Smith', '987-6543-2109', 'jane@example.com', SYSDATE, 'RC');
+    </insert>
+
+</mapper>
