@@ -12,8 +12,6 @@ package collection.codingtest.programmers.level1;
     12345	[5,4,3,2,1]
  */
 
-import java.util.Collections;
-
 public class FlipNaturalNumbersIntoArray {
 
     public int[] solution(long n) {
