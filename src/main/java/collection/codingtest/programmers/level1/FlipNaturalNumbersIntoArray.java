@@ -12,12 +12,32 @@ package collection.codingtest.programmers.level1;
     12345	[5,4,3,2,1]
  */
 
+import java.util.Collections;
+
 public class FlipNaturalNumbersIntoArray {
 
     public int[] solution(long n) {
-        int[] answer = {};
+        char[] charArray = String.valueOf(n).toCharArray();
+        int[] answer = new int[charArray.length];
 
+        for(int i=charArray.length - 1; i>=0; i--) {
+            answer[i] = Integer.parseInt(String.valueOf(charArray[i]));
+        }
 
+        int left = 0;
+        int right = answer.length - 1;
+
+        while (left < right) {
+            int temp = answer[left];
+
+            answer[left] = answer[right];
+            answer[right] = temp;
+
+            left++;
+            right--;
+        }
+
+        System.out.println(answer[0]);
 
         return answer;
     }
