@@ -1,4 +1,4 @@
-package collection.codingtest.programmers.level1.day1;
+package collection.codingtest.programmers.level1;
 
 public class HideYourCellPhoneNumber {
 

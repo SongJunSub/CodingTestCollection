@@ -1,7 +1,6 @@
-package collection.codingtest.programmers.level1.day1;
+package collection.codingtest.programmers.level1;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class RemoveSmallestNumber {

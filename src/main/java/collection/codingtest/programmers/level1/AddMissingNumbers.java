@@ -1,4 +1,4 @@
-package collection.codingtest.programmers.level1.day2;
+package collection.codingtest.programmers.level1;
 
 public class AddMissingNumbers {
 
