@@ -1,80 +1,53 @@
 package collection.codingtest.programmers.level1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+
+/*
+ * 문제 설명 : 정수를 저장한 배열, arr 에서 가장 작은 수를 제거한 배열을 리턴하는 함수, solution을 완성해주세요.
+ * 단, 리턴하려는 배열이 빈 배열인 경우엔 배열에 -1을 채워 리턴하세요.
+ * 예를들어 arr이 [4,3,2,1]인 경우는 [4,3,2]를 리턴 하고, [10]면 [-1]을 리턴 합니다.
+ *
+ * 제한 사항 :
+ *  - arr은 길이 1 이상인 배열입니다.
+ *  - 인덱스 i, j에 대해 i ≠ j이면 arr[i] ≠ arr[j] 입니다.
+ * 입출력 예 :
+ * arr	        return
+ * [4,3,2,1]	[4,3,2]
+ * [10]	        [-1]
+ */
 
 public class RemoveSmallestNumber {
 
-    /*
-     * 문제 설명 : 정수를 저장한 배열, arr 에서 가장 작은 수를 제거한 배열을 리턴하는 함수, solution을 완성해주세요.
-     * 단, 리턴하려는 배열이 빈 배열인 경우엔 배열에 -1을 채워 리턴하세요.
-     * 예를들어 arr이 [4,3,2,1]인 경우는 [4,3,2]를 리턴 하고, [10]면 [-1]을 리턴 합니다.
-     *
-     * 제한 사항 :
-     *  - arr은 길이 1 이상인 배열입니다.
-     *  - 인덱스 i, j에 대해 i ≠ j이면 arr[i] ≠ arr[j] 입니다.
-     * 입출력 예 :
-     * arr	        return
-     * [4,3,2,1]	[4,3,2]
-     * [10]	        [-1]
-     */
-
-    public int[] solution(int[] arr){
-
+    public int[] solution(int[] arr) {
         int[] answer = {};
 
-        answer = new int[arr.length - 1];
+        ArrayList<Integer> arrayList = new ArrayList<>();
 
-        if(arr.length > 1){
-            ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        int min = Arrays.stream(arr).min().orElse(Integer.MAX_VALUE);
 
-            for(int i : arr){
-                arrayList.add(i);
-            }
-
-            Integer minimum = Collections.min(arrayList);
-
-            arrayList.remove(minimum);
-
-            for(int i=0; i<arrayList.size(); i++){
-                answer[i] = arrayList.get(i);
-            }
+        for(int i : arr) {
+            if(i != min) arrayList.add(i);
         }
-        else{
-            answer[0] = -1;
+
+        answer = new int[arrayList.size()];
+
+        for(int i=0; i<arrayList.size(); i++) {
+            answer[i] = arrayList.get(i);
         }
+
+        if(arr.length == 1) return new int[]{-1};
+
+        System.out.println(Arrays.toString(answer));
 
         return answer;
-
     }
 
-    public int[] solution2(int[] arr){
+    public static void main(String[] args) {
+        RemoveSmallestNumber removeSmallestNumber = new RemoveSmallestNumber();
 
-        int[] answer = {};
-
-        answer = new int[arr.length - 1];
-
-        if(arr.length > 1){
-            ArrayList<Integer> arrayList = new ArrayList<Integer>();
-
-            for(int i : arr){
-                arrayList.add(i);
-            }
-
-            Integer minimum = Collections.min(arrayList);
-
-            arrayList.remove(minimum);
-
-            for(int i=0; i<arrayList.size(); i++){
-                answer[i] = arrayList.get(i);
-            }
-        }
-        else{
-            answer[0] = -1;
-        }
-
-        return answer;
-
+        removeSmallestNumber.solution(new int[]{4, 3, 2, 1});
     }
 
 }
