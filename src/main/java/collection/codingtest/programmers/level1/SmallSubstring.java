@@ -36,13 +36,10 @@ public class SmallSubstring {
     public int solution(String t, String p) {
         int answer = 0;
 
-        char[] charT = t.toCharArray();
-        char[] charP = p.toCharArray();
+        for(int i=0; i<=t.length() - p.length(); i++) {
+            String sub = t.substring(i, p.length() + i);
 
-        for(int i=0; i<=charT.length - charP.length; i++) {
-            int substringNumber = Integer.parseInt(t.substring(i, charP.length + i));
-
-            if(substringNumber <= Integer.parseInt(p)) answer++;
+            if(Long.parseLong(sub) <= Long.parseLong(p)) answer++;
         }
 
         return answer;
