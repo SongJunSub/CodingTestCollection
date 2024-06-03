@@ -11,6 +11,7 @@ package collection.codingtest.typesummary.c002_arrangement;
     1 2 3 1 => true
  */
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class CheckForDuplicateNumbers {
@@ -51,6 +52,25 @@ public class CheckForDuplicateNumbers {
         return false;
     }
 
+    // 시간 복잡도 : O(NlogN)
+    // 공간 복잡도 : O(logN)
+    public boolean solution2(int[] numbers) {
+        // 시간 복잡도 : O(NlogN)
+        // 공간 복잡도 : O(logN)
+        Arrays.sort(numbers);
+
+        // 시간 복잡도 O(n)
+        for(int i=0; i<numbers.length-1; i++) {
+            if(numbers[i] == numbers[i + 1]) {
+                System.out.println("true");
+                return true;
+            }
+        }
+
+        System.out.println("false");
+        return false;
+    }
+
     public static void main(String[] args) {
         CheckForDuplicateNumbers checkForDuplicateNumbers = new CheckForDuplicateNumbers();
 
@@ -59,6 +79,9 @@ public class CheckForDuplicateNumbers {
 
         checkForDuplicateNumbers.solution1(new int[]{1, 2, 3, 4, 5 ,6});
         checkForDuplicateNumbers.solution1(new int[]{1, 2, 3, 1});
+
+        checkForDuplicateNumbers.solution2(new int[]{1, 2, 3, 4, 5 ,6});
+        checkForDuplicateNumbers.solution2(new int[]{1, 2, 3, 1});
     }
 
 }
