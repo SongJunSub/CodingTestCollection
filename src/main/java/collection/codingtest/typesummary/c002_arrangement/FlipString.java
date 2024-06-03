@@ -18,23 +18,48 @@ package collection.codingtest.typesummary.c002_arrangement;
      - Java의 StringBuilder API를 알고 있는지
  */
 
+import java.util.Arrays;
+
 public class FlipString {
 
     public String mySolution(String str) {
         StringBuilder answer = new StringBuilder();
         char[] chars = str.toCharArray();
 
-        for(int i = chars.length - 1; i >= 0; i--) {
+        for (int i = chars.length - 1; i >= 0; i--) {
             answer.append(chars[i]);
         }
 
         return answer.toString();
     }
 
+    // 시간 복잡도 O(n)
+    // 공간 복잡도 O(n)
+    public String solution1(String str) {
+        char[] chars = str.toCharArray();
+        // 공간 복잡도 O(n)
+        char[] reversedChars = new char[chars.length];
+        String answer = "";
+
+        // 4 - 4 -> 0
+        // 4 - 3 -> 1
+        // 4 - 2 -> 2
+        // 4 - 1 -> 3
+        // 4 - 0 -> 4
+        // 시간 복잡도 O(n)
+        for (int i = chars.length - 1; i >= 0; i--) {
+            reversedChars[chars.length - 1 - i] = chars[i];
+            answer += reversedChars[chars.length - 1 - i] ;
+        }
+
+        return answer;
+    }
+
     public static void main(String[] args) {
         FlipString flipString = new FlipString();
 
         System.out.println(flipString.mySolution("happy new year"));
+        System.out.println(flipString.solution1("happy new year"));
     }
 
 }
