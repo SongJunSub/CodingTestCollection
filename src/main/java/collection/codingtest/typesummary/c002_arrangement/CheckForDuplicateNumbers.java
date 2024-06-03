@@ -1,6 +1,7 @@
 package collection.codingtest.typesummary.c002_arrangement;
 
 /*
+    문제 설명
     숫자로 구성된 배열이 주어졌을 때 그 배열에 중복된 숫자가 있는지 확인하는 함수를 작성하세요.
     중복된 숫자가 있다면 true, 없다면 false를 return 하세요.
 
