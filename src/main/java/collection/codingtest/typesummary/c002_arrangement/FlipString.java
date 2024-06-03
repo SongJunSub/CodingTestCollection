@@ -55,11 +55,32 @@ public class FlipString {
         return answer;
     }
 
+    // Swap 방식
+    // 예를 들어, hello에서 h와 o를 교환, e와 l을 교환한다.
+    // 루프가 절반으로 줄어들었지만 여전히 시간 복잡도는 O(n)이다.
+    // 기존에 있던 배열에서 swap한 형식이므로 공간 복잡도는 O(1)이다.
+    public String solution2(String str) {
+        char[] chars = str.toCharArray();
+        String answer = "";
+
+        for (int i = 0; i < chars.length / 2; i++) {
+            char temp = chars[i];
+
+            chars[i] = chars[chars.length - 1 - i];
+            chars[chars.length - 1 - i] = temp;
+        }
+
+        answer = new String(chars);
+
+        return answer;
+    }
+
     public static void main(String[] args) {
         FlipString flipString = new FlipString();
 
         System.out.println(flipString.mySolution("happy new year"));
         System.out.println(flipString.solution1("happy new year"));
+        System.out.println(flipString.solution2("happy new year"));
     }
 
 }
