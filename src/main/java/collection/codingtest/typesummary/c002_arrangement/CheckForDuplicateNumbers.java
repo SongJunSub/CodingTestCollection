@@ -13,6 +13,8 @@ package collection.codingtest.typesummary.c002_arrangement;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class CheckForDuplicateNumbers {
 
@@ -71,6 +73,24 @@ public class CheckForDuplicateNumbers {
         return false;
     }
 
+    public boolean solution3(int[] numbers) {
+        // 시간 복잡도 : O(1)
+        Set<Integer> numberSet = new HashSet<>();
+
+        for (int number : numbers) {
+            if(numberSet.contains(number)) {
+                System.out.println("true");
+                return true;
+            }
+            else {
+                numberSet.add(number);
+            }
+        }
+
+        System.out.println("false");
+        return false;
+    }
+
     public static void main(String[] args) {
         CheckForDuplicateNumbers checkForDuplicateNumbers = new CheckForDuplicateNumbers();
 
@@ -82,6 +102,9 @@ public class CheckForDuplicateNumbers {
 
         checkForDuplicateNumbers.solution2(new int[]{1, 2, 3, 4, 5 ,6});
         checkForDuplicateNumbers.solution2(new int[]{1, 2, 3, 1});
+
+        checkForDuplicateNumbers.solution3(new int[]{1, 2, 3, 4, 5 ,6});
+        checkForDuplicateNumbers.solution3(new int[]{1, 2, 3, 1});
     }
 
 }
