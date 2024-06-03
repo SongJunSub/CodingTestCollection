@@ -66,11 +66,45 @@ public class FindAUniqueNumber {
         return 0;
     }
 
+    /*
+        문제 접근
+        XOR 비트 연산자 (^)를 사용하는 방법이다.
+        XOR 비트 연산자 : 두 비트가 서로 다를 때 1
+
+        5 ^ 0 = 5
+        101
+        000
+        ---
+        101 => 5
+
+        5 ^ 5 = 0
+        101
+        101
+        ---
+        000 => 0
+
+        1 ^ 5 ^ 1 = (1 ^ 1) ^ 5 = 0 ^ 5 = 5
+
+        시간 복잡도 : O(n)
+        공간 복잡도 : O(1)
+     */
+
+    public int solutionWithXOR(int[] numbers) {
+        int uniqueNumber = 0;
+
+        for(int number : numbers) {
+            uniqueNumber ^= number;
+        }
+
+        return uniqueNumber;
+    }
+
     public static void main(String[] args) {
         FindAUniqueNumber findAUniqueNumber = new FindAUniqueNumber();
 
         findAUniqueNumber.solutionWithList(new int[]{2, 3, 1, 3, 2});
         findAUniqueNumber.solutionWithHashMap(new int[]{2, 3, 1, 3, 2});
+        findAUniqueNumber.solutionWithXOR(new int[]{2, 3, 1, 3, 2});
     }
 
 }
