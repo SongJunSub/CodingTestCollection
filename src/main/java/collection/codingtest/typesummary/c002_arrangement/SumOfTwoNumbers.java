@@ -23,6 +23,8 @@ package collection.codingtest.typesummary.c002_arrangement;
  */
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SumOfTwoNumbers {
 
@@ -57,6 +59,26 @@ public class SumOfTwoNumbers {
         return null;
     }
 
+    // 시간 복잡도 : O(n)
+    // 공간 복잡도 : O(n)
+    public int[] solution2(int[] numbers, int target) {
+        Map<Integer, Integer> numberMap = new HashMap<>();
+
+        for (int i = 0; i < numbers.length; i++) {
+            numberMap.put(numbers[i], i);
+        }
+
+        for (int i = 0; i < numbers.length; i++) {
+            int numbertoFind = target - numbers[i];
+
+            if (numberMap.containsKey(numbertoFind) && numberMap.get(numbertoFind) != i) {
+                return new int[]{i, numberMap.get(numbertoFind)};
+            }
+        }
+
+        return null;
+    }
+
     public static void main(String[] args) {
 
         System.out.println(Arrays.toString(new SumOfTwoNumbers().mySolution(new int[]{2, 3, 5, 7}, 8)));
@@ -64,6 +86,9 @@ public class SumOfTwoNumbers {
 
         System.out.println(Arrays.toString(new SumOfTwoNumbers().solution1(new int[]{2, 3, 5, 7}, 8)));
         System.out.println(Arrays.toString(new SumOfTwoNumbers().solution1(new int[]{1, 2, 6, 8}, 9)));
+
+        System.out.println(Arrays.toString(new SumOfTwoNumbers().solution2(new int[]{2, 3, 5, 7}, 8)));
+        System.out.println(Arrays.toString(new SumOfTwoNumbers().solution2(new int[]{1, 2, 6, 8}, 9)));
     }
 
 }
