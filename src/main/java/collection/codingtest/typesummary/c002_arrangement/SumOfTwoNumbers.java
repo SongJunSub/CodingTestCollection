@@ -41,10 +41,29 @@ public class SumOfTwoNumbers {
         return answer;
     }
 
+    // 시간 복잡도 : O(n²)
+    // 공간 복잡도 : 배열의 길이가 2로 고정되어 있으므로 O(1)이다.
+    public int[] solution1(int[] numbers, int target) {
+        // 시간 복잡도 O(n)
+        for (int i = 0; i < numbers.length; i++) {
+            // 시간 복잡도 O(n)
+            for (int j = i + 1; j < numbers.length; j++) {
+                if (numbers[i] + numbers[j] == target) {
+                    return new int[]{i, j};
+                }
+            }
+        }
+
+        return null;
+    }
+
     public static void main(String[] args) {
 
         System.out.println(Arrays.toString(new SumOfTwoNumbers().mySolution(new int[]{2, 3, 5, 7}, 8)));
         System.out.println(Arrays.toString(new SumOfTwoNumbers().mySolution(new int[]{1, 2, 6, 8}, 9)));
+
+        System.out.println(Arrays.toString(new SumOfTwoNumbers().solution1(new int[]{2, 3, 5, 7}, 8)));
+        System.out.println(Arrays.toString(new SumOfTwoNumbers().solution1(new int[]{1, 2, 6, 8}, 9)));
     }
 
 }
