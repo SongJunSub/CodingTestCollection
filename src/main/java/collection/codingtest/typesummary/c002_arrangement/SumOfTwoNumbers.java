@@ -1,5 +1,9 @@
 package collection.codingtest.typesummary.c002_arrangement;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 /*
     문제 설명
     숫자로 구성된 배열 numbers와 target 숫자 하나가 주어졌을 때, numbers 배열에 들어있는 두 수를 더해 target 숫자를 만들 수 있는 인덱스 두 개를 찾는 함수를 작성해주세요.
@@ -21,10 +25,6 @@ package collection.codingtest.typesummary.c002_arrangement;
      - HashMap의 오퍼레이션을 이해하고 있는지
      - 2Sum 문제를 3Sum 문제로 바꿔도 해결할 수 있는지
  */
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SumOfTwoNumbers {
 
