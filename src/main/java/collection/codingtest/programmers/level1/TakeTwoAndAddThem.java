@@ -58,9 +58,34 @@ public class TakeTwoAndAddThem {
         return answer;
     }
 
+    // 중복을 피하기 위해 HashSet을 사용하여 각 합을 저장한다.
+    public int[] betterSolution(int[] numbers) {
+        int[] answer = {};
+        Set<Integer> sumSet = new HashSet<>();
+
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                sumSet.add(numbers[i] + numbers[j]);
+            }
+        }
+
+        List<Integer> answerList = new ArrayList<>(sumSet);
+
+        answer = new int[answerList.size()];
+
+        for (int i = 0; i < answerList.size(); i++) {
+            answer[i] = answerList.get(i);
+        }
+
+        return answer;
+    }
+
     public static void main(String[] args) {
         System.out.println(Arrays.toString(new TakeTwoAndAddThem().mySolution(new int[]{2, 1, 3, 4, 1})));
         System.out.println(Arrays.toString(new TakeTwoAndAddThem().mySolution(new int[]{5, 0, 2, 7})));
+
+        System.out.println(Arrays.toString(new TakeTwoAndAddThem().betterSolution(new int[]{2, 1, 3, 4, 1})));
+        System.out.println(Arrays.toString(new TakeTwoAndAddThem().betterSolution(new int[]{5, 0, 2, 7})));
     }
 
 }
