@@ -31,8 +31,8 @@ public class FlipLinkedList {
             tail = node;
         }
         else if (tail != null) {
-            tail.next = node;
-            tail = tail.next;
+            //tail.next = node;
+            //tail = tail.next;
         }
     }
 
@@ -42,8 +42,8 @@ public class FlipLinkedList {
         LinkedNode next = null;
 
         while (current != null) {
-            next = current.next;
-            current.next = previous;
+            //next = current.next;
+            //current.next = previous;
             previous = current;
             current = next;
         }
@@ -55,9 +55,9 @@ public class FlipLinkedList {
     public int[] solution(int[] numbers) {
         LinkedList list = new LinkedList();
 
-        for (int number : numbers) {
+        /*for (int number : numbers) {
             list.add(new LinkedNode(1));
-        }
+        }*/
 
         return null;
     }
