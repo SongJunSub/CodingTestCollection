@@ -46,9 +46,27 @@ public class SortStringsHoweverYouWant {
         return answer;
     }
 
+    public String[] betterSolution(String[] strings, int n) {
+        Arrays.sort(strings, (s1, s2) -> {
+            if (s1.charAt(n) == s2.charAt(n)) {
+                // n번째 문자가 같을 때 사전순 비교
+                return s1.compareTo(s2);
+            }
+            else {
+                // n번째 문자 비교
+                return Character.compare(s1.charAt(n), s2.charAt(n));
+            }
+        });
+
+        return strings;
+    }
+
     public static void main(String[] args) {
         System.out.println(Arrays.toString(new SortStringsHoweverYouWant().solution(new String[]{"sun", "bed", "car"}, 1)));
         System.out.println(Arrays.toString(new SortStringsHoweverYouWant().solution(new String[]{"abce", "abcd", "cdx"}, 2)));
+
+        System.out.println(Arrays.toString(new SortStringsHoweverYouWant().betterSolution(new String[]{"sun", "bed", "car"}, 1)));
+        System.out.println(Arrays.toString(new SortStringsHoweverYouWant().betterSolution(new String[]{"abce", "abcd", "cdx"}, 2)));
     }
 
 }
