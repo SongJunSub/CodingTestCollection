@@ -58,9 +58,29 @@ public class FoodFightCompetition {
         return answer.toString();
     }
 
+    public String betterSolution(int[] food) {
+        StringBuilder leftSide = new StringBuilder();
+
+        for (int i = 1; i< food.length; i++) {
+            for (int j = 0; j < food[i] / 2; j++) {
+                leftSide.append(i);
+            }
+        }
+
+        StringBuilder answer = new StringBuilder(leftSide);
+
+        answer.append(0);
+        answer.append(leftSide.reverse());
+
+        return answer.toString();
+    }
+
     public static void main(String[] args) {
         System.out.println(new FoodFightCompetition().solution(new int[]{1, 3, 4, 6}));
         System.out.println(new FoodFightCompetition().solution(new int[]{1, 7, 1, 2}));
+
+        System.out.println(new FoodFightCompetition().betterSolution(new int[]{1, 3, 4, 6}));
+        System.out.println(new FoodFightCompetition().betterSolution(new int[]{1, 7, 1, 2}));
     }
 
 }
