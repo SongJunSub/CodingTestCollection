@@ -73,7 +73,6 @@ public class SecretMap {
 
             arrayBuilder2.append(stringArr2).reverse();
 
-            //answer[i] = arrayBuilder2.toString();
             ints[i] = String.valueOf(Integer.parseInt(arrayBuilder1.toString()) + Integer.parseInt(arrayBuilder2.toString()));
 
             stringArr1.delete(0, stringArr1.length());
@@ -81,8 +80,6 @@ public class SecretMap {
             stringArr2.delete(0, stringArr2.length());
             arrayBuilder2.delete(0, arrayBuilder2.length());
         }
-
-        System.out.println(Arrays.toString(ints));
 
         StringBuilder result = new StringBuilder();
 
@@ -104,9 +101,34 @@ public class SecretMap {
         return answer;
     }
 
+    public String[] betterSolution(int n, int[] arr1, int[] arr2) {
+        String[] answer = new String[n];
+
+        for (int i = 0; i < n; i++) {
+            // OR 연산을 통해 두 배열의 각 원소를 결합
+            int orArr = arr1[i] | arr2[i];
+            // 이진수 문자열로 변환
+            String binaryString = Integer.toBinaryString(orArr);
+
+            // 결과 문자열을 n 길이로 맞춤
+            while (binaryString.length() < n) {
+                binaryString = "0" + binaryString;
+            }
+
+            // 이진수 문자열을 비밀지도 형식으로 변환
+            binaryString = binaryString.replace("1", "#").replace("0", " ");
+
+            answer[i] = binaryString;
+        }
+
+        return answer;
+    }
+
     public static void main(String[] args) {
         System.out.println(Arrays.toString(new SecretMap().solution(5, new int[]{9, 20, 28, 18, 11}, new int[]{30, 1, 21, 17, 28})));
         System.out.println(Arrays.toString(new SecretMap().solution(6, new int[]{46, 33, 33, 22, 31, 50}, new int[]{27, 56, 19, 14, 14, 10})));
+        System.out.println(Arrays.toString(new SecretMap().betterSolution(5, new int[]{9, 20, 28, 18, 11}, new int[]{30, 1, 21, 17, 28})));
+        System.out.println(Arrays.toString(new SecretMap().betterSolution(6, new int[]{46, 33, 33, 22, 31, 50}, new int[]{27, 56, 19, 14, 14, 10})));
     }
 
 }
