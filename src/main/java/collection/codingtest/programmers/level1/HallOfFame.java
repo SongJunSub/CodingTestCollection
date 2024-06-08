@@ -1,7 +1,6 @@
 package collection.codingtest.programmers.level1;
 
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 
 /*
     문제 설명
@@ -54,7 +53,7 @@ public class HallOfFame {
                 }
             }
 
-            System.out.println("T : " + Arrays.toString(arr));
+            //System.out.println("T : " + Arrays.toString(arr));
 
             answer[day - 1] = arr[0];
             day++;
@@ -63,9 +62,31 @@ public class HallOfFame {
         return answer;
     }
 
+    public int[] betterSolution(int k, int[] score) {
+        int[] answer = new int[score.length];
+        PriorityQueue<Integer> queue = new PriorityQueue<>(k);
+
+        for (int i = 0; i < score.length; i++) {
+            if (queue.size() < k) {
+                queue.add(score[i]);
+            }
+            else if (score[i] > queue.peek()) {
+                queue.poll();
+                queue.add(score[i]);
+            }
+
+            answer[i] = queue.peek();
+        }
+
+        return answer;
+    }
+
     public static void main(String[] args) {
         System.out.println(Arrays.toString(new HallOfFame().solution(3, new int[]{10, 100, 20, 150, 1, 100, 200})));
         System.out.println(Arrays.toString(new HallOfFame().solution(4, new int[]{0, 300, 40, 300, 20, 70, 150, 50, 500, 1000})));
+
+        System.out.println(Arrays.toString(new HallOfFame().betterSolution(3, new int[]{10, 100, 20, 150, 1, 100, 200})));
+        System.out.println(Arrays.toString(new HallOfFame().betterSolution(4, new int[]{0, 300, 40, 300, 20, 70, 150, 50, 500, 1000})));
     }
 
 }
