@@ -1,6 +1,7 @@
 package collection.codingtest.programmers.level1;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 /*
     문제 설명
@@ -68,10 +69,29 @@ public class Pokemon {
         return answer;
     }
 
+    public int betterSolution(int[] nums) {
+        // 중복되지 않는 데이터를 저장하기 위한 HashSet을 생성한다.
+        HashSet<Integer> numsSet = new HashSet<>();
+        // 선택할 수 있는 최대 폰켓몬 수
+        int possibleNum = nums.length / 2;
+
+        // nums 배열을 순회하며 중복되지 않는 데이터를 HashSet에 추가한다.
+        for (int num : nums) {
+            numsSet.add(num);
+        }
+
+        return Math.min(numsSet.size(), possibleNum);
+    }
+
+
     public static void main(String[] args) {
         System.out.println(new Pokemon().solution(new int[]{3, 1, 2, 3}));
         System.out.println(new Pokemon().solution(new int[]{3, 3, 3, 2, 2, 4}));
         System.out.println(new Pokemon().solution(new int[]{3, 3, 3, 2, 2, 2}));
+
+        System.out.println(new Pokemon().betterSolution(new int[]{3, 1, 2, 3}));
+        System.out.println(new Pokemon().betterSolution(new int[]{3, 3, 3, 2, 2, 4}));
+        System.out.println(new Pokemon().betterSolution(new int[]{3, 3, 3, 2, 2, 2}));
     }
 
 }
