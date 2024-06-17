@@ -62,9 +62,26 @@ public class Fruiterer {
         return answer;
     }
 
+    public int betterSolution(int k, int m, int[] score) {
+        int answer = 0;
+        int scoreLength = score.length;
+
+        Arrays.sort(score);
+
+        // 높은 점수부터 m개씩 상자를 만든다.
+        for (int i = scoreLength - m; i >= 0; i -= m) {
+            // i번째 사과를 포함한 상자의 최소 점수 * m을 더한다.
+            answer += score[i] * m;
+        }
+
+        return answer;
+    }
+
     public static void main(String[] args) {
-        System.out.println(new Fruiterer().solution(3, 4, new int[]{1, 2, 3, 1, 2, 3, 1}));
-        System.out.println(new Fruiterer().solution(4, 3, new int[]{4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2}));
+        System.out.println(new Fruiterer().betterSolution(3, 4, new int[]{1, 2, 3, 1, 2, 3, 1}));
+        System.out.println(new Fruiterer().betterSolution(4, 3, new int[]{4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2}));
+        System.out.println(new Fruiterer().betterSolution(3, 4, new int[]{1, 2, 3, 1, 2, 3, 1}));
+        System.out.println(new Fruiterer().betterSolution(4, 3, new int[]{4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2}));
     }
 
 }
