@@ -1,9 +1,6 @@
 package collection.codingtest.programmers.level1;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /*
     문제 설명
@@ -83,8 +80,6 @@ public class FailureRate {
             }
         }
 
-        System.out.println(Arrays.toString(failures));
-
         List<Integer> failuresList = new ArrayList<>();
 
         for (int i = 1; i <= N; i++) {
@@ -106,9 +101,55 @@ public class FailureRate {
         return answer;
     }
 
+    public int[] betterSolution(int N, int[] stages) {int[] stageCounts = new int[N + 2];
+        for (int stage : stages) {
+            stageCounts[stage]++;
+        }
+
+        int players = stages.length;
+        List<StageFailure> failureRates = new ArrayList<>();
+
+        for (int i = 1; i <= N; i++) {
+            if (players == 0) {
+                failureRates.add(new StageFailure(i, 0));
+            } else {
+                double failureRate = (double) stageCounts[i] / players;
+                failureRates.add(new StageFailure(i, failureRate));
+                players -= stageCounts[i];
+            }
+        }
+
+        Collections.sort(failureRates, (a, b) -> {
+            if (b.failureRate == a.failureRate) {
+                return a.stage - b.stage;
+            }
+            return Double.compare(b.failureRate, a.failureRate);
+        });
+
+        int[] result = new int[N];
+        for (int i = 0; i < N; i++) {
+            result[i] = failureRates.get(i).stage;
+        }
+
+        return result;
+    }
+
+    private static class StageFailure {
+        int stage;
+        double failureRate;
+
+        StageFailure(int stage, double failureRate) {
+            this.stage = stage;
+            this.failureRate = failureRate;
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println(Arrays.toString(new FailureRate().solution(5, new int[]{2, 1, 2, 6, 2, 4, 3, 3})));
         System.out.println(Arrays.toString(new FailureRate().solution(4, new int[]{4, 4, 4, 4, 4})));
+        System.out.println("\n");
+        System.out.println(Arrays.toString(new FailureRate().betterSolution(5, new int[]{2, 1, 2, 6, 2, 4, 3, 3})));
+        System.out.println(Arrays.toString(new FailureRate().betterSolution(4, new int[]{4, 4, 4, 4, 4})));
     }
 
 }
