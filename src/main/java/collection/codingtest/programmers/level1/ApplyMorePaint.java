@@ -52,9 +52,25 @@ public class ApplyMorePaint {
         int answer = 1;
         int sectionIndex = 0;
 
-        while (section[sectionIndex] + m - 1 < section[section.length - 1]) {
+        while (sectionIndex < section.length && section[sectionIndex] + m - 1 < section[section.length - 1]) {
             answer++;
             sectionIndex++;
+        }
+
+        return answer;
+    }
+
+    public int betterSolution(int n, int m, int[] section) {
+        int answer = 0;
+        int sectionIndex = 0;
+
+        while (sectionIndex < section.length) {
+            int start = section[sectionIndex];
+            answer++;
+
+            while (sectionIndex < section.length && section[sectionIndex] < start + m) {
+                sectionIndex++;
+            }
         }
 
         return answer;
@@ -64,6 +80,10 @@ public class ApplyMorePaint {
         System.out.println(new ApplyMorePaint().solution(8, 4, new int[]{2, 3, 6}));
         System.out.println(new ApplyMorePaint().solution(5, 4, new int[]{1, 3}));
         System.out.println(new ApplyMorePaint().solution(4, 1, new int[]{1, 2, 3, 4}));
+        System.out.println("\n");
+        System.out.println(new ApplyMorePaint().betterSolution(8, 4, new int[]{2, 3, 6}));
+        System.out.println(new ApplyMorePaint().betterSolution(5, 4, new int[]{1, 3}));
+        System.out.println(new ApplyMorePaint().betterSolution(4, 1, new int[]{1, 2, 3, 4}));
     }
 
 }
