@@ -1,6 +1,9 @@
 package collection.codingtest.programmers.level1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 /*
     문제 설명
@@ -82,8 +85,52 @@ public class DataAnalysis {
         return answer;
     }
 
+    public int[][] betterSolution(int[][] data, String ext, int val_ext, String sort_by) {
+        int[][] answer = {};
+        // 컬럼명을 담을 리스트
+        List<int[]> columnList = new ArrayList<>();
+        int extIndex = 0;
+        int sortByIndex = 0;
+
+        switch (ext) {
+            case "code" -> extIndex = 0;
+            case "date" -> extIndex = 1;
+            case "maximum" -> extIndex = 2;
+            case "remain" -> extIndex = 3;
+            default -> extIndex = 4;
+        }
+
+        for (int[] dataRow : data) {
+            if (dataRow[extIndex] < val_ext) {
+                columnList.add(dataRow);
+            }
+        }
+
+        switch (sort_by) {
+            case "code" -> sortByIndex = 0;
+            case "date" -> sortByIndex = 1;
+            case "maximum" -> sortByIndex = 2;
+            case "remain" -> sortByIndex = 3;
+            default -> sortByIndex = 4;
+        }
+
+        int finalSortByIndex = sortByIndex;
+
+        columnList.sort(Comparator.comparingInt(row -> row[finalSortByIndex]));
+
+        answer = new int[columnList.size()][];
+
+        for (int i = 0; i < columnList.size(); i++) {
+            answer[i] = columnList.get(i);
+        }
+
+        return answer;
+    }
+
     public static void main(String[] args) {
         System.out.println(Arrays.deepToString(new DataAnalysis().solution(new int[][]{{1, 20300104, 100, 80}, {2, 20300804, 847, 37}, {3, 20300401, 10, 8}}, "date", 20300501, "remain")));
+        System.out.println("\n");
+        System.out.println(Arrays.deepToString(new DataAnalysis().betterSolution(new int[][]{{1, 20300104, 100, 80}, {2, 20300804, 847, 37}, {3, 20300401, 10, 8}}, "date", 20300501, "remain")));
     }
 
 }
