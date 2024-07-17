@@ -45,9 +45,9 @@ import java.util.List;
     입출력 예
     data	                                                                ext	    val_ext	    sort_by	    result
     [[1, 20300104, 100, 80], [2, 20300804, 847, 37], [3, 20300401, 10, 8]]	"date"	20300501	"remain"	[[3,20300401,10,8],[1,20300104,100,80]]
+
     입출력 예 설명
     입출력 예 #1
-
     본문의 내용과 동일합니다.
  */
 public class DataAnalysis {
